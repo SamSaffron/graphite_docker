@@ -1,6 +1,6 @@
-## Graphite + Carbon
+## Graphite + Carbon + Statsd + Graphity
 
-An all-in-one image running graphite and carbon-cache. **Version**: 0.9.12.
+An all-in-one image running graphite and carbon-cache.
 
 This image contains a sensible default configuration of graphite and
 carbon-cache. Starting this container will, by default, bind the the following
@@ -11,15 +11,6 @@ host ports:
 - `2004`: the carbon-cache pickle receiver
 - `7002`: the carbon-cache query port (used by the web interface)
 
-With this image, you can get up and running with graphite by simply running:
-
-    docker run -d nickstenning/graphite
-
-If you already have services running on the host on one or more of these ports,
-you may wish to allow docker to assign random ports on the host. You can do this
-easily by running:
-
-    docker run -p 80 -p 2003 -p 2004 -p 7002 -d nickstenning/graphite
 
 You can log into the administrative interface of graphite-web (a Django
 application) with the username `admin` and password `admin`. These passwords can
@@ -45,5 +36,9 @@ resulting in whisper files of approximately 2.5MiB.
 
     10s:8d,1m:31d,10m:1y,1h:5y
 
-For more information, see [the
-repository](https://github.com/nickstenning/dockerfiles/tree/master/graphite).
+
+### Based off
+
+https://github.com/nickstenning/dockerfiles.git
+
+Extended by Sam Saffron
