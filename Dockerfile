@@ -9,23 +9,23 @@ run	add-apt-repository ppa:chris-lea/node.js
 run	apt-add-repository ppa:brightbox/ruby-ng
 
 run	apt-get -y update
-run	apt-get -y install nodejs git ruby rubygems ruby-switch redis-server build-essential
+run	apt-get -y install nodejs git ruby1.9.3 ruby-switch redis-server build-essential
+run	apt-get -y install python-ldap python-cairo python-django python-twisted python-django-tagging python-simplejson python-memcache python-pysqlite2 python-support python-pip gunicorn supervisor nginx-light
 run	gem install bundler
 
 run	mkdir /src
-
-# Install graphiti
-run	git clone https://github.com/paperlesspost/graphiti.git /src/graphiti
-run	cd /src/graphiti && bundle install --deployment --without 'test development'
 
 # Install statsd
 run	git clone https://github.com/etsy/statsd.git /src/statsd
 
 # Install required packages
-run	apt-get -y install python-ldap python-cairo python-django python-twisted python-django-tagging python-simplejson python-memcache python-pysqlite2 python-support python-pip gunicorn supervisor nginx-light
 run	pip install whisper
 run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/lib" carbon
 run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/webapp" graphite-web
+
+# Install graphiti
+run	git clone https://github.com/paperlesspost/graphiti.git /src/graphiti
+# run	cd /src/graphiti && bundle install --deployment --without 'test development'
 
 # Add system service config
 add	./nginx/nginx.conf /etc/nginx/nginx.conf
