@@ -6,13 +6,19 @@ run	apt-get -y update
 
 run	apt-get -y install python-software-properties
 run	add-apt-repository ppa:chris-lea/node.js
-
+run	apt-add-repository ppa:brightbox/ruby-ng
 
 run	apt-get -y update
-run	apt-get -y install nodejs git
+run	apt-get -y install nodejs git ruby rubygems ruby-switch redis-server build-essential
+run	gem install bundler
+
+run	mkdir /src
+
+# Install graphiti
+run	git clone https://github.com/paperlesspost/graphiti.git /src/graphiti
+run	cd /src/graphiti && bundle install --deployment --without 'test development'
 
 # Install statsd
-run	mkdir /src
 run	git clone https://github.com/etsy/statsd.git /src/statsd
 
 # Install required packages
@@ -27,6 +33,10 @@ add	./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # statsd
 add	./statsd/config.js /src/statsd/config.js
+
+# graphiti
+add	./graphiti/unicorn.rb /src/graphiti/config/unicorn.rb
+add	./graphiti/settings.yml /src/graphiti/config/settings.yml
 
 # Add graphite config
 add	./graphite/initial_data.json /var/lib/graphite/webapp/graphite/initial_data.json
@@ -53,6 +63,9 @@ expose	7002:7002
 expose	8125:8125/udp
 # Statsd Management port
 expose	8126:8126
+
+# unicorn for graphiti
+expose 8080:8080
 
 cmd	["/usr/bin/supervisord"]
 
