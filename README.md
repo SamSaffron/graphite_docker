@@ -42,7 +42,7 @@ resulting in whisper files of approximately 2.5MiB.
     
 ### Getting started
 
-Fill in the blanks in supervisor.conf before building the image. You will need to register an app on google see: https://github.com/bitly/google_auth_proxy for more details
+**Fill in the blanks** in supervisord.conf before building the image, otherwise Google auth will not work. You will need to register an app on google see: https://github.com/bitly/google_auth_proxy for more details
 
 PR welcome to improve this config. 
 
