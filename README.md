@@ -1,4 +1,4 @@
-## Graphite + Carbon + Statsd + Grafana + google http proxy
+## Graphite + Carbon + Statsd + Grafana + Google Auth Proxy
 
 An all-in-one image running graphite and carbon-cache.
 
