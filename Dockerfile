@@ -1,6 +1,6 @@
 from	ubuntu:12.04
 run	echo 'deb http://us.archive.ubuntu.com/ubuntu/ precise universe' >> /etc/apt/sources.list
-run	apt-get -y update && apt-get upgrade && apt-get dist-upgrade
+run	apt-get -y update
 
 run	apt-get -y install python-software-properties &&\
 	add-apt-repository ppa:chris-lea/node.js &&\
