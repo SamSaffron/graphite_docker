@@ -52,9 +52,10 @@ run	chmod 0664 /var/lib/graphite/storage/graphite.db
 run	cd /var/lib/graphite/webapp/graphite && python manage.py syncdb --noinput
 
 # graphana
-run     mkdir /src/grafana && cd /src/grafana &&\
-	wget https://github.com/torkelo/grafana/releases/download/v1.4.0/grafana-1.4.0.tar.gz &&\
-	tar -xzvf grafana-1.4.0.tar.gz && rm grafana-1.4.0.tar.gz
+run     cd /src &&\
+	wget http://grafanarel.s3.amazonaws.com/grafana-1.7.0.tar.gz &&\
+	tar -xzvf grafana-1.7.0.tar.gz && rm grafana-1.7.0.tar.gz &&\
+	mv grafana-1.7.0 grafana
 
 add     ./grafana/config.js /src/grafana/config.js
 
