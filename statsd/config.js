@@ -4,5 +4,7 @@
   port: 8125,
   mgmt_port: 8126,
   backends: ['./backends/graphite'],
-  debug: true
+  debug: true,
+  deleteGauges: true,
+  percentThreshold: [90,95,99]
 }

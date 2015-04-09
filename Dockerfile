@@ -32,6 +32,7 @@ add	./graphite/initial_data.json /var/lib/graphite/webapp/graphite/initial_data.
 add	./graphite/local_settings.py /var/lib/graphite/webapp/graphite/local_settings.py
 add	./graphite/carbon.conf /var/lib/graphite/conf/carbon.conf
 add	./graphite/storage-schemas.conf /var/lib/graphite/conf/storage-schemas.conf
+add	./graphite/storage-aggregation.conf /var/lib/graphite/conf/storage-aggregation.conf
 
 add     ./grafana/config.ini /etc/grafana/config.ini
 
