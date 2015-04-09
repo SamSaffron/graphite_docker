@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# this script ensures graphite has a valid data directory
-
 if [ ! -d /data/graphite ]; then
   mkdir -p /data/graphite/whisper
   mkdir -p /data/graphite/log/webapp
@@ -11,3 +9,10 @@ if [ ! -d /data/graphite ]; then
   chmod 0664 /data/graphite/graphite.db
   cd /var/lib/graphite/webapp/graphite && python manage.py syncdb --noinput
 fi
+
+mkdir -p /data/grafana
+chown -R grafana /data/grafana
+
+mkdir -p /data/log/supervisor
+
+exec /usr/bin/supervisord

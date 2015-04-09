@@ -33,14 +33,6 @@ add	./graphite/local_settings.py /var/lib/graphite/webapp/graphite/local_setting
 add	./graphite/carbon.conf /var/lib/graphite/conf/carbon.conf
 add	./graphite/storage-schemas.conf /var/lib/graphite/conf/storage-schemas.conf
 
-run	mkdir -p /data/graphite/whisper
-run	touch /data/graphite/graphite.db /data/graphite/index
-run	chown -R www-data /data/graphite
-run	chmod 0775 /data/graphite /data/graphite/whisper
-run	chmod 0664 /data/graphite/graphite.db
-run	cd /var/lib/graphite/webapp/graphite && python manage.py syncdb --noinput
-
-
 add     ./grafana/config.ini /etc/grafana/config.ini
 
 # proxy
@@ -50,6 +42,10 @@ add     ./google_auth_proxy/google_auth_proxy /usr/local/bin/google_auth_proxy
 # Add system service config
 add	./nginx/nginx.conf /etc/nginx/nginx.conf
 add	./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+
+
+
 # Nginx
 #
 # graphite
@@ -69,7 +65,7 @@ expose	8125:8125/udp
 # Statsd Management port
 expose	8126:8126
 
-add ./graphite/create_graphite_db /usr/bin/create_graphite_db
-add ./grafana/ensure_grafana_db /usr/bin/ensure_grafana_db
+add ./bin/init /usr/bin/init
 
-cmd	/usr/bin/ensure_grafana_db && /usr/bin/create_graphite_db && /usr/bin/supervisord
+cmd /usr/bin/init
+

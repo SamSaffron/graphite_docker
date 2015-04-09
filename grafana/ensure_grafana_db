@@ -1,4 +1,0 @@
-#!/bin/bash
-
-mkdir -p /data/grafana
-chown -R grafana /data/grafana
