@@ -36,10 +36,6 @@ add	./graphite/storage-aggregation.conf /var/lib/graphite/conf/storage-aggregati
 
 add     ./grafana/config.ini /etc/grafana/config.ini
 
-# proxy
-add     ./google_auth_proxy/google_auth_proxy /usr/local/bin/google_auth_proxy
-
-
 # Add system service config
 add	./nginx/nginx.conf /etc/nginx/nginx.conf
 add	./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
