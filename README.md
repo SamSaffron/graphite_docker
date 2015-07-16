@@ -8,8 +8,6 @@ host ports:
 
 - `80`: the graphite web interface
 - `81`: the grafana web interface
-- `90`: the graphite web interface (google auth protected)
-- `91`: the grafana web interface (google auth protected)
 - `2003`: the carbon-cache line receiver (the standard graphite protocol)
 - `2004`: the carbon-cache pickle receiver
 - `7002`: the carbon-cache query port (used by the web interface)
