@@ -12,6 +12,7 @@ fi
 
 mkdir -p /data/grafana
 chown -R grafana /data/grafana
+chown -R grafana /usr/share/grafana
 rm -fr /data/graphite/*.pid
 
 mkdir -p /data/log/supervisor
