@@ -19,10 +19,10 @@ run	pip install whisper
 run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/lib" carbon
 run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/webapp" graphite-web
 
-# graphana
+# grafana
 run     cd ~ &&\
-	wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.0.1_amd64.deb &&\
-        dpkg -i grafana_2.0.1_amd64.deb && rm grafana_2.0.1_amd64.deb
+	wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.1.3_amd64.deb &&\
+        dpkg -i grafana_2.1.3_amd64.deb && rm grafana_2.1.3_amd64.deb
 
 # statsd
 add	./statsd/config.js /src/statsd/config.js
