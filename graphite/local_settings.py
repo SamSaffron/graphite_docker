@@ -1,4 +1,12 @@
 # Edit this file to override the default graphite settings, do not edit settings.py
+from os import environ
+
+# Set SECRET_KEY if passed in via environment variable
+try:
+    if environ['SECRET_KEY']:
+        SECRET_KEY = environ['SECRET_KEY']
+except KeyError:
+    pass
 
 # Turn on debugging and restart apache if you ever see an "Internal Server Error" page
 #DEBUG = True

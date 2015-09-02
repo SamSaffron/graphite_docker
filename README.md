@@ -29,6 +29,7 @@ recommended) you can use docker's data volumes feature. For example, to store
 graphite's metric database at `/data/graphite` on the host, you could use:
 
     docker run -v /data/graphite:/var/lib/graphite/storage/whisper \
+               -e SECRET_KEY='random-secret-key' \
                -p 80:80 \
                -p 3000:3000 \
                -p 2003:2003 \
@@ -47,6 +48,8 @@ resulting in whisper files of approximately 2.5MiB.
     
     
 ### Getting started
+
+Generate your SECRET_KEY from [here](http://www.miniwebtool.com/django-secret-key-generator/). It is optional but highly recommended.
 
 **Fill in the blanks** in supervisord.conf before building the image, otherwise Google auth will not work. You will need to register an app on google see: https://github.com/bitly/google_auth_proxy for more details
 
