@@ -2,8 +2,8 @@
 
 An all-in-one image running graphite and carbon-cache.
 
-This image contains a sensible default configuration of graphite and
-carbon-cache. Starting this container will expose following ports:
+This image contains a sensible default configuration of graphite,
+carbon-cache and grafana. Starting this container will expose following ports:
 
 - `80`: the graphite web interface
 - `3000`: the grafana web interface
@@ -23,12 +23,10 @@ accessible from anywhere if the host firewall is unconfigured.
 
 ### Data volumes
 
-Graphite data is stored at `/var/lib/graphite/storage/whisper` within the
-container. If you wish to store your metrics outside the container (highly
-recommended) you can use docker's data volumes feature. For example, to store
-graphite's metric database at `/data/graphite` on the host, you could use:
+All data is stored in the /data folder in the container (graphite metrics and grafana db)
 
-    docker run -v /data/graphite:/var/lib/graphite/storage/whisper \
+
+    docker run -v /data/graphite:/data \
                -e SECRET_KEY='random-secret-key' \
                -p 80:80 \
                -p 3000:3000 \
@@ -45,15 +43,10 @@ By default, this instance of carbon-cache uses the following retention periods
 resulting in whisper files of approximately 2.5MiB.
 
     10s:8d,1m:31d,10m:1y,1h:5y
-    
-    
+
 ### Getting started
 
 Generate your SECRET_KEY from [here](http://www.miniwebtool.com/django-secret-key-generator/). It is optional but highly recommended.
-
-**Fill in the blanks** in supervisord.conf before building the image, otherwise Google auth will not work. You will need to register an app on google see: https://github.com/bitly/google_auth_proxy for more details
-
-PR welcome to improve this config. 
 
 
 ### Based off

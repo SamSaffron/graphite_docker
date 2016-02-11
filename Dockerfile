@@ -5,7 +5,7 @@ run	apt-get -y update
 run	apt-get -y install software-properties-common &&\
 	apt-get -y update
 
-run     apt-get -y install  python-django-tagging python-simplejson python-memcache \
+run     apt-get -y install nodejs python-django-tagging python-simplejson python-memcache \
 			    python-ldap python-cairo python-django python-twisted   \
 			    python-pysqlite2 python-support python-pip gunicorn     \
 			    supervisor nginx-light nodejs git wget curl
