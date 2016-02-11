@@ -1,4 +1,4 @@
-## Graphite + Carbon + Statsd + Grafana + Google Auth Proxy
+## Graphite + Carbon + Statsd + Grafana
 
 An all-in-one image running graphite and carbon-cache.
 
@@ -37,7 +37,7 @@ graphite's metric database at `/data/graphite` on the host, you could use:
                -p 7002:7002 \
                -p 8125:8125/udp \
                -p 8126:8126 \
-               -d nickstenning/graphite
+               -d samsaffron/graphite
 
 ### Technical details
 

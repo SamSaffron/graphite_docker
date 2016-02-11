@@ -3,7 +3,6 @@ run	echo 'deb http://us.archive.ubuntu.com/ubuntu/ trusty universe' >> /etc/apt/
 run	apt-get -y update
 
 run	apt-get -y install software-properties-common &&\
-	add-apt-repository ppa:chris-lea/node.js &&\
 	apt-get -y update
 
 run     apt-get -y install  python-django-tagging python-simplejson python-memcache \
@@ -21,8 +20,8 @@ run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="
 
 # grafana
 run     cd ~ &&\
-	wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.1.3_amd64.deb &&\
-        dpkg -i grafana_2.1.3_amd64.deb && rm grafana_2.1.3_amd64.deb
+	wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.6.0_amd64.deb &&\
+        dpkg -i grafana_2.6.0_amd64.deb && rm grafana_2.6.0_amd64.deb
 
 # statsd
 add	./statsd/config.js /src/statsd/config.js
@@ -39,8 +38,6 @@ add     ./grafana/config.ini /etc/grafana/config.ini
 # Add system service config
 add	./nginx/nginx.conf /etc/nginx/nginx.conf
 add	./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-
 
 
 # Nginx
