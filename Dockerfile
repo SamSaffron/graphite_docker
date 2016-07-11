@@ -49,6 +49,8 @@ expose  3000
 
 # Carbon line receiver port
 expose	2003
+# Carbon UDP receiver port
+expose	2003/udp
 # Carbon pickle receiver port
 expose	2004
 # Carbon cache query port
