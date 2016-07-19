@@ -20,8 +20,8 @@ run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="
 
 # grafana
 run     cd ~ &&\
-	wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.0.1_amd64.deb &&\
-        dpkg -i grafana_3.0.1_amd64.deb && rm grafana_3.0.1_amd64.deb
+	wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.0-1468321182_amd64.deb &&\
+        dpkg -i grafana_3.1.0-1468321182_amd64.deb && rm grafana_3.1.0-1468321182_amd64.deb
 
 # statsd
 add	./statsd/config.js /src/statsd/config.js
@@ -60,6 +60,9 @@ expose	7002
 expose	8125/udp
 # Statsd Management port
 expose	8126
+
+# we probably want to do this
+# volume /data
 
 add ./bin/init /usr/bin/init
 
