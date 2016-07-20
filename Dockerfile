@@ -61,6 +61,8 @@ expose	8125/udp
 # Statsd Management port
 expose	8126
 
+env STATSD_IPV6 0
+
 # we probably want to do this
 # volume /data
 

@@ -17,4 +17,9 @@ rm -fr /data/graphite/*.pid
 
 mkdir -p /data/log/supervisor
 
+if [[ $STATSD_IPV6 = '1' ]]; then
+  echo "Booting with StatsD IPV6 support"
+  sed -i "s/address_ipv6: false/address_ipv6: true/g" /src/statsd/config.js
+fi
+
 exec /usr/bin/supervisord

@@ -1,3 +1,4 @@
 #! /bin/bash
 
-docker run --name graphite -it --rm -v `pwd`/data:/data  -p 14000:80 -p 14001:3000 -p 8125:8125/udp samsaffron/graphite
+docker run --name graphite -it --rm -v `pwd`/data:/data  -p 14000:80 -p 14001:3000 \
+    -p 8125:8125/udp -e STATSD_IPV6=0 samsaffron/graphite
