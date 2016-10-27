@@ -68,5 +68,5 @@ env STATSD_IPV6 0
 
 add ./bin/init /usr/bin/init
 
-cmd /usr/bin/init
+cmd exec /usr/bin/init
 
