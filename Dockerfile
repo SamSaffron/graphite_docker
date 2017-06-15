@@ -15,7 +15,7 @@ run     apt-get -y install nodejs python-django-tagging python-simplejson python
 run	mkdir /src && git clone https://github.com/etsy/statsd.git /src/statsd
 
 # Install required packages
-run	pip install whisper pytz
+run	pip install whisper pytz scandir
 run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/lib" carbon
 run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="--install-lib=/var/lib/graphite/webapp" graphite-web
 
