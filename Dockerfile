@@ -1,15 +1,38 @@
-from	ubuntu:14.04
+from ubuntu:14.04
 run	echo 'deb http://us.archive.ubuntu.com/ubuntu/ trusty universe' >> /etc/apt/sources.list
 run	apt-get -y update
 
 run	apt-get -y install software-properties-common &&\
 	apt-get -y update
 
-run     apt-get -y install nodejs python-django-tagging python-simplejson python-memcache \
-			    python-ldap python-cairo python-django python-twisted   \
-			    python-pysqlite2 python-support python-pip gunicorn     \
-			    supervisor nginx-light nodejs git wget curl \
-			    python-dev libcairo2-dev libffi-dev build-essential
+RUN apt-get -y update \
+  && apt-get -y upgrade \
+  && apt-get -y --force-yes install vim \
+  nginx \
+  python-dev \
+  python-flup \
+  python-pip \
+  python-ldap \
+  expect \
+  git \
+  memcached \
+  sqlite3 \
+  libffi-dev \
+  libcairo2 \
+  libcairo2-dev \
+  python-cairo \
+  python-rrdtool \
+  pkg-config \
+  nodejs \
+  supervisor \
+  wget \
+  libssl-dev \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN pip install gunicorn pyopenssl ndg-httpsclient pyasn1 django==1.8.18 \
+  python-memcached==1.53 \
+  txAMQP==0.6.2 \
+  && pip install --upgrade pip
 
 # Install statsd
 run	mkdir /src && git clone https://github.com/etsy/statsd.git /src/statsd
@@ -21,8 +44,9 @@ run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="
 
 # grafana
 run     cd ~ &&\
-	wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.0-1468321182_amd64.deb &&\
-        dpkg -i grafana_3.1.0-1468321182_amd64.deb && rm grafana_3.1.0-1468321182_amd64.deb
+        wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_4.4.3_amd64.deb &&\
+        sudo dpkg -i grafana_4.4.3_amd64.deb &&\
+        rm grafana_4.4.3_amd64.deb
 
 # statsd
 add	./statsd/config.js /src/statsd/config.js
